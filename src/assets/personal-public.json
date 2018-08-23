@@ -1,0 +1,29 @@
+{
+  "pageTitle": "私について",
+  "cardsData": [{
+      "title": "基本情報",
+      "body": "氏名：<span class=\"mask\">ＸＸＸＸ</span>, sosmii<br>生年月日：1992/6/30<br>年齢：26<br>学歴：千葉大学 法経学部 経済学科 2016/3卒業<br>職歴：Javaプログラマー - <span class=\"mask\">株式会社ＸＸＸＸＸＸＸＸ</span>（100人前後の2次請SIer, 2016/4 - 2018/5）",
+      "expand": true
+    },
+    {
+      "title": "スキル",
+      "body": "実務経験有：<br><div class=\"indent-1\">Java, Spring拡張独自フレームワーク, Struts拡張独自フレームワーク, JUnit, Swing<br>Oracle DB, PostgreSQL<br>JavaScript, TypeScript, Angular, HTML5, CSS3, (jQuery)<br>TurtoiseSVN<br></div><br>実務経験無（趣味）：<br><div class=\"indent-1\">ES6, Node.js, Vue.js, Vuex<br>Firebase<br>Git</div>",
+      "expand": true
+    },
+    {
+      "title": "資格・語学",
+      "body": "基本情報技術者<br>TOEIC Score 730 - Stack Overflowの投稿が難なく読める程度",
+      "expand": true
+    },
+    {
+      "title": "職務経歴詳細",
+      "body": "危険物輸送管理システムの作成（2016/7 - 2017/3）<br><div class=\"indent-1\">Java, Spring拡張独自フレームワーク, JUnit, Oracle DB使用。<br>与えられた画面レイアウト・機能仕様書を元に、詳細設計・製造・単体テストを担当。<br>主に単体テストと、検索・詳細情報表示・新規作成系画面のロジックの製造を行った。</div><br>データ統計システムの改修・機能追加（2017/4 - 2017/9）<br><div class=\"indent-1\">Java, Swing, PostgreSQL使用。<br>与えられた画面レイアウト・既存コードを元に、機能設計・詳細設計・製造・単体テストを担当。<br>帳票への入出力と、その画面表示を行う画面およびロジックの製造を行った。</div><br>土木工事管理システムの機能追加（2017/5 - 2017/7）<br><div class=\"indent-1\">他メンバーが製造した箇所のテストを担当。<br>ActionScriptを解読しての既存仕様の発掘、中国人BPとの折衝、WebアプリケーションのE2Eテストを行った。</div><br>土木工事管理システムのリプレイス（2017/7 - 2018/5）<br><div class=\"indent-1\">Struts拡張独自フレームワーク, Oracle DB, JavaScript, TypeScript, Angular, HTML5, CSS3, jQuery使用。<br>与えられた画面レイアウトを元に、基本設計・詳細設計・製造を担当。<br>仕様が曖昧な部分の洗い出しと、主に新規作成・編集・削除・詳細表示系の画面およびロジックの製造を行った。</div>",
+      "expand": true
+    },
+    {
+      "title": "趣味嗜好",
+      "body": "趣味：<br><div class=\"indent-1\">PCゲーム（歴16年）, サイクリング, 緑地巡り</div><br>好きだったゲームたち：<br><div class=\"indent-1\">Wolfenstein: Enemy Territory, Chivalry: Medieval Warfare, Battle Field 3</div><br>好きな緑地たち：<br><div class=\"indent-1\">夏見緑地, 赤城自然園, 大町公園, 大井ふ頭緑道公園, みなとが丘ふ頭公園, 佐伯山緑地, 下丸子二丁目公園, 多摩川台公園, (緯度, 経度) = 35.7071669, 139.9938681の川沿い（初夏がオススメ）</div><br>好きな楽曲：<br><div class=\"indent-1\">relive / toconoma, Hello Windows / ヒゲドライバー</div><br>好きなアーティスト：<br><div class=\"indent-1\">amazarashi</div><br>好きな本：<br><div class=\"indent-1\">自省録/マルクス・アウレリウス, 幸福論/アラン, 幸福の資本論/橘玲</div>",
+      "expand": true
+    }
+  ]
+}
