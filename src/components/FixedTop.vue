@@ -10,6 +10,27 @@
         <img src="@/assets/portrait.svg">
       </div>
     </div>
+    <div class="button-wrapper">
+      <router-link class="button button--personal" :to="{ name: 'AboutMe' }">
+        <div class="button__icon">
+          <font-awesome-icon :icon="['fas', 'user']"/>
+        </div>
+        <div class="button__text">私について</div>
+      </router-link>
+      <router-link class="button button--quitting" :to="{ name: 'Quitting' }">
+        <div class="button__icon">
+          <font-awesome-icon :icon="['fas', 'heart']"/>
+          <font-awesome-icon :icon="['fas', 'bolt']" class="overwriting-bolt"/>
+        </div>
+        <div class="button__text">転職の理由</div>
+      </router-link>
+        <router-link class="button button--desire" :to="{ name: 'Desire' }">
+          <div class="button__icon">
+            <font-awesome-icon :icon="['fas', 'heart']"/>
+          </div>
+          <div class="button__text">こんな風に働きたい</div>
+        </router-link>
+    </div>
   </div>
 </template>
 
@@ -98,5 +119,66 @@ export default {
 .portrait-area__portrait {
   margin-top: 15px;
   margin-bottom: calc(100% / 20);
+}
+.button-wrapper {
+  height: calc(40% - 8vh);
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  /* animation: on-load-popup 1s ease; */
+}
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  max-width: 30vmin;
+  max-height: 30vmin;
+  margin-bottom: 10px;
+  border-radius: 30px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 43px -4px rgba(0,0,0,.19);
+  margin-bottom: 4vh;
+  transition: background-color .3s;
+}
+.button--personal:hover,
+.button--personal[selected] {
+  background-color: rgba(var(--color-yellow), .2);
+}
+.button--quitting:hover,
+.button--quitting[selected] {
+  background-color: rgba(var(--color-blue), .2);
+}
+.button--desire:hover,
+.button--desire[selected] {
+  background-color: rgba(var(--color-red), .2);
+}
+.button__icon {
+  position: relative;
+  height: 100px;
+}
+.button__icon > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  margin: auto;
+  font-size: 4rem;
+}
+.overwriting-bolt {
+  color: white;
+  font-size:2rem;
+  transform:scale(1,2);
+  transition: color .3s;
+}
+.button--quitting:hover .overwriting-bolt,
+.button--quitting[selected] .overwriting-bolt {
+  color: #C6DDEC;
 }
 </style>
