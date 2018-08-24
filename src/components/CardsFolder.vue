@@ -10,8 +10,10 @@
     <h1 id="page-title">{{ pageTitle }}</h1>
     <div
       class="card"
-      v-for="card in cards"
+      :class="{ 'expand': card.expand || -1 < expandTarget.indexOf(index) }"
+      v-for="(card, index) in cards"
       :key="card.displayOrder"
+      @click="addToExpandTarget(index)"
     >
       <div class="card__title">{{ card.title }}</div>
       <div class="card__body" v-html="card.body"></div>
@@ -24,6 +26,11 @@
 export default {
   name: 'CardsFolder',
   props: [ 'paginationState', 'cardsFolder' ],
+  data () {
+    return {
+      expandTarget: []
+    }
+  },
   computed: {
     routeName () {
       return this.$route.name
@@ -55,6 +62,20 @@ export default {
         case 'Desire':
           return this.cardsFolder.desire.cardsData
       }
+    }
+  },
+  watch: {
+    routeName: function () {
+      this.expandTarget = []
+    }
+  },
+  methods: {
+    addToExpandTarget (index) {
+      if (this.expandTarget.indexOf(index) > -1) {
+        return
+      }
+
+      this.expandTarget.push(index)
     }
   }
 }
