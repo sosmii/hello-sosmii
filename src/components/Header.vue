@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="center-area">
-      <button class="button button--contact">
+      <button class="button button--contact" @click="openLoginModal()">
         <font-awesome-icon :icon="['far', 'envelope']" class="button__icon-with-text"/>
         Contact
       </button>
@@ -23,13 +23,56 @@
         <span class="button-text-shrinkable">こんな風に働きたい</span>
       </router-link>
     </div>
+    <BaseModal v-if="loginModalState" @close="closeContactModal()">
+      <BaseContact/>
+    </BaseModal>
   </header>
 </template>
 
 <script>
+import BaseModal from '@/components/modals/BaseModal'
+import BaseContact from '@/components/modals/contact/BaseContact'
+import { setTimeout } from 'timers'
+
 export default {
   name: 'Header',
-  props: [ 'paginationState' ]
+  components: {
+    BaseModal,
+    BaseContact
+  },
+  props: [ 'paginationState' ],
+  data () {
+    return {
+      loginModalState: false
+    }
+  },
+  methods: {
+    openLoginModal () {
+      if (this.$route.name === 'DummyTop') {
+        this.loginModalState = true
+        return
+      }
+
+      this.scrollToTop()
+      setTimeout(() => {
+        this.$router.push({ name: 'DummyTop' })
+        this.loginModalState = true
+      }, 500)
+    },
+    closeContactModal () {
+      this.loginModalState = false
+    },
+    scrollToTop () {
+      const elem = document.getElementById('top')
+
+      if (elem) {
+        elem.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    }
+  }
 }
 </script>
 
