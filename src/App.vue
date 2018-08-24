@@ -2,7 +2,7 @@
   <div id="app">
     <Header/>
     <FixedTop/>
-    <router-view/>
+    <router-view :cardsFolder="cardsFolder"/>
   </div>
 </template>
 
@@ -10,12 +10,27 @@
 import 'normalize.css'
 import Header from '@/components/Header'
 import FixedTop from '@/components/FixedTop'
+import * as personalJson from '@/assets/personal-public.json'
+import * as quittingJson from '@/assets/quitting-public.json'
+import * as desireJson from '@/assets/desire-public.json'
 
 export default {
   name: 'App',
   components: {
     Header,
     FixedTop
+  },
+  data () {
+    return {
+      cardsFolder: null
+    }
+  },
+  mounted () {
+    this.cardsFolder = {
+      personal: personalJson,
+      quitting: quittingJson,
+      desire: desireJson
+    }
   }
 }
 </script>

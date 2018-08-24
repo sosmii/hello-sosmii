@@ -16,14 +16,38 @@
 <script>
 export default {
   name: 'CardsFolder',
-  data () {
-    return {
-      pageTitle: 'aaa',
-      cards: [{
-        title: 'bbb',
-        body: '<span style="color:red">ccc</span>',
-        displayOrder: 1
-      }]
+  props: [ 'cardsFolder' ],
+  computed: {
+    routeName () {
+      return this.$route.name
+    },
+    pageTitle () {
+      if (!this.cardsFolder) {
+        return null
+      }
+
+      switch (this.routeName) {
+        case 'AboutMe':
+          return this.cardsFolder.personal.pageTitle
+        case 'Quitting':
+          return this.cardsFolder.quitting.pageTitle
+        case 'Desire':
+          return this.cardsFolder.desire.pageTitle
+      }
+    },
+    cards () {
+      if (!this.cardsFolder) {
+        return null
+      }
+
+      switch (this.routeName) {
+        case 'AboutMe':
+          return this.cardsFolder.personal.cardsData
+        case 'Quitting':
+          return this.cardsFolder.quitting.cardsData
+        case 'Desire':
+          return this.cardsFolder.desire.cardsData
+      }
     }
   }
 }
