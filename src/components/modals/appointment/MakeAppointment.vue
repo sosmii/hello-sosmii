@@ -136,6 +136,7 @@ export default {
     selectSkype () {
       this.apoType = 'skype'
       this.apoDate = null
+      this.place = null
       this.iconsSelected = true
       this.calcedReservedDates = this.reservedDatesForSkype
     },
