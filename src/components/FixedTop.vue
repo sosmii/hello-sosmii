@@ -11,20 +11,20 @@
       </div>
     </div>
     <div class="button-wrapper">
-      <router-link class="button button--personal" :to="{ name: 'AboutMe' }">
+      <router-link class="button button--personal" :to="{ name: 'AboutMe' }" :selected="paginationState.isInAboutMePage">
         <div class="button__icon">
           <font-awesome-icon :icon="['fas', 'user']"/>
         </div>
         <div class="button__text">私について</div>
       </router-link>
-      <router-link class="button button--quitting" :to="{ name: 'Quitting' }">
+      <router-link class="button button--quitting" :to="{ name: 'Quitting' }" :selected="paginationState.isInQuittingPage">
         <div class="button__icon">
           <font-awesome-icon :icon="['fas', 'heart']"/>
           <font-awesome-icon :icon="['fas', 'bolt']" class="overwriting-bolt"/>
         </div>
         <div class="button__text">転職の理由</div>
       </router-link>
-        <router-link class="button button--desire" :to="{ name: 'Desire' }">
+        <router-link class="button button--desire" :to="{ name: 'Desire' }" :selected="paginationState.isInDesirePage">
           <div class="button__icon">
             <font-awesome-icon :icon="['fas', 'heart']"/>
           </div>
@@ -36,7 +36,8 @@
 
 <script>
 export default {
-  name: 'FixedTop'
+  name: 'FixedTop',
+  props: [ 'paginationState' ]
 }
 </script>
 

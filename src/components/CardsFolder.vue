@@ -1,5 +1,12 @@
 <template>
-  <div class="cardsFolder">
+  <div
+    class="cardsFolder"
+    :class="[
+      { 'background-yellow': paginationState.isInAboutMePage },
+      { 'background-blue': paginationState.isInQuittingPage },
+      { 'background-red': paginationState.isInDesirePage }
+    ]"
+  >
     <h1 id="page-title">{{ pageTitle }}</h1>
     <div
       class="card"
@@ -16,7 +23,7 @@
 <script>
 export default {
   name: 'CardsFolder',
-  props: [ 'cardsFolder' ],
+  props: [ 'paginationState', 'cardsFolder' ],
   computed: {
     routeName () {
       return this.$route.name

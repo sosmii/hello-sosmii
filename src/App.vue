@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <Header/>
-    <FixedTop/>
-    <router-view :cardsFolder="cardsFolder"/>
+    <FixedTop :paginationState="paginationState"/>
+    <router-view :paginationState="paginationState" :cardsFolder="cardsFolder"/>
   </div>
 </template>
 
@@ -23,6 +23,18 @@ export default {
   data () {
     return {
       cardsFolder: null
+    }
+  },
+  computed: {
+    isInAboutMePage () { return (this.$route.name === 'AboutMe') },
+    isInQuittingPage () { return (this.$route.name === 'Quitting') },
+    isInDesirePage () { return (this.$route.name === 'Desire') },
+    paginationState () {
+      return {
+        isInAboutMePage: this.isInAboutMePage,
+        isInQuittingPage: this.isInQuittingPage,
+        isInDesirePage: this.isInDesirePage
+      }
     }
   },
   mounted () {
