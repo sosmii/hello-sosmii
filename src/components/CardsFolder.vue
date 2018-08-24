@@ -67,9 +67,25 @@ export default {
   watch: {
     routeName: function () {
       this.expandTarget = []
+      this.scrollToTitle()
     }
   },
+  mounted () {
+    this.scrollToTitle()
+  },
   methods: {
+    scrollToTitle () {
+      setTimeout(() => {
+        const elem = document.getElementById('page-title')
+
+        if (elem) {
+          elem.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
+      }, 500)
+    },
     addToExpandTarget (index) {
       if (this.expandTarget.indexOf(index) > -1) {
         return
