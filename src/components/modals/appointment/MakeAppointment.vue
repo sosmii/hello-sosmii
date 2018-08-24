@@ -105,6 +105,10 @@ export default {
       }
     },
     disabledCondition () {
+      if (!this.apoType) {
+        return true
+      }
+
       if ((this.apoType === 'office' || this.apoType === 'lunch') &&
         (!this.apoDate || !this.place)) {
         return true
