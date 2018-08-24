@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header :paginationState="paginationState"/>
     <FixedTop :paginationState="paginationState"/>
     <router-view :paginationState="paginationState" :cardsFolder="cardsFolder"/>
   </div>
