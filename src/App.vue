@@ -7,6 +7,7 @@
 </template>
 
 <script>
+/* global firebase:true */
 import 'normalize.css'
 import Header from '@/components/Header'
 import FixedTop from '@/components/FixedTop'
@@ -43,6 +44,18 @@ export default {
       quitting: quittingJson,
       desire: desireJson
     }
+
+    firebase.auth().onAuthStateChanged(async user => {
+      if (!user) {
+        this.$store.commit('updateLoginState', false)
+        this.$store.commit('updateRegisterState', false)
+
+        return
+      }
+
+      this.$store.commit('updateLoginState', true)
+      this.$store.commit('updateRegisterState', false)
+    })
   }
 }
 </script>
