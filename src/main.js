@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Vuex from 'vuex'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faEnvelope, faCheckCircle, faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import { faUser, faHeart, faBolt, faBuilding, faUtensils, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -21,9 +22,27 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 const VueLoaders = { LineSpinFadeLoader, install }
 Vue.use(VueLoaders)
 
+// setup Vuex
+Vue.use(Vuex)
+const store = new Vuex.Store({
+  state: {
+    isUserLoggedIn: false,
+    isUserRegistered: false
+  },
+  mutations: {
+    updateLoginState (state, boolean) {
+      state.isUserLoggedIn = boolean
+    },
+    updateRegisterState (state, boolean) {
+      state.isUserRegistered = boolean
+    }
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
   template: '<App/>'
