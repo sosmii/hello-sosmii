@@ -27,7 +27,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     isUserLoggedIn: false,
-    isUserRegistered: false
+    isUserRegistered: false,
+    githubId: null
   },
   mutations: {
     updateLoginState (state, boolean) {
@@ -35,6 +36,9 @@ const store = new Vuex.Store({
     },
     updateRegisterState (state, boolean) {
       state.isUserRegistered = boolean
+    },
+    setGithubId (state, id) {
+      state.githubId = id
     }
   }
 })

@@ -55,6 +55,7 @@ export default {
 
       this.$store.commit('updateLoginState', true)
       this.$store.commit('updateRegisterState', false)
+      this.$store.commit('setGithubId', user.providerData[0].uid)
     })
   }
 }

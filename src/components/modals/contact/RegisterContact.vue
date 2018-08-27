@@ -33,6 +33,9 @@
 </template>
 
 <script>
+/* global firebase:true */
+import { mapState } from 'vuex'
+
 export default {
   name: 'RegisterContact',
   data () {
@@ -44,6 +47,9 @@ export default {
       whileLoading: false
     }
   },
+  computed: {
+    ...mapState(['githubId'])
+  },
   methods: {
     clickRegisterButton () {
       if (!this.pic || !this.companyName || !this.companyHp) {
@@ -54,8 +60,14 @@ export default {
       this.sendRegister()
     },
     async sendRegister () {
-      // 登録用にCloud Functions呼ぶ
-      // xxx...
+      const registerFunc = firebase.functions().httpsCallable('register')
+      await registerFunc({
+        pic: this.pic,
+        companyName: this.companyName,
+        companyHp: this.companyHp,
+        message: this.message,
+        githubId: this.githubId
+      })
 
       this.$store.commit('updateRegisterState', true)
     },

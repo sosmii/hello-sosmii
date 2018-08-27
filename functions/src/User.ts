@@ -81,4 +81,45 @@ export default class User {
   public getCompanyName(): string {
     return this._companyName;
   }
+
+  /**
+   * insert a new user to the table.
+   * 
+   * @param userInput request data from the client
+   */
+  public async insert(userInput: UserInfo): Promise<void> {
+
+    const uid = userInput.uid;
+    const email = userInput.email;
+    const pic = userInput.pic;
+    const companyName = userInput.companyName;
+    const companyHp = userInput.companyHp;
+    const message = userInput.message;
+    const githubApiUrl = `https://api.github.com/user/${userInput.githubId}`;
+
+    await this._firestore.collection('user').doc(uid).set({
+      isAuthorized: false,
+      isDenied: false,
+      isReserved: false,
+      mailAddress: email,
+      personInCharge: pic,
+      companyName: companyName,
+      companyHp: companyHp,
+      message: message,
+      githubApiUrl: githubApiUrl
+    })
+  }
+}
+
+/**
+ * an interface which defines required members for the user table
+ */
+export interface UserInfo {
+  uid: string;
+  githubId: string;
+  email: string;
+  pic: string;
+  companyName: string;
+  companyHp: string;
+  message: string;
 }
