@@ -22,7 +22,7 @@
       </div>
     </div>
     <footer class="register-modal__footer">
-      <button class="button" @click="sendRegister(); showLoadingIcon()" v-if="!whileLoading">
+      <button class="button" @click="clickRegister()" v-if="!whileLoading">
         <font-awesome-icon :icon="['far', 'envelope']" class="button__icon"/>
       </button>
       <div class="loading-icon-wrapper" v-if="whileLoading">
@@ -51,11 +51,15 @@ export default {
     ...mapState(['githubId'])
   },
   methods: {
-    async sendRegister () {
+    clickRegister () {
       if (!this.pic || !this.companyName || !this.companyHp) {
         return
       }
 
+      this.showLoadingIcon()
+      this.sendRegister()
+    },
+    async sendRegister () {
       const registerFunc = firebase.functions().httpsCallable('register')
       await registerFunc({
         pic: this.pic,
