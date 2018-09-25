@@ -1,5 +1,6 @@
 <template>
-  <div class="top-container" id="top">
+  <div/>
+  <!-- <div class="top-container" id="top">
     <div class="portrait-area">
       <div class="portrait-area__msg">
         <div class="typewriter-effect">
@@ -34,10 +35,11 @@
     <BaseModal v-if="linkModalState" @close="closeLinkModal()">
       <LinkModal/>
     </BaseModal>
-  </div>
+  </div> -->
 </template>
 
 <script>
+/*
 import BaseModal from '@/components/modals/BaseModal'
 import LinkModal from '@/components/modals/LinkModal'
 
@@ -62,6 +64,7 @@ export default {
     }
   }
 }
+*/
 </script>
 
 <style scoped>

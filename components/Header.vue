@@ -1,56 +1,84 @@
 <template>
   <header class="header">
     <div class="center-area">
-      <button class="button button--contact"  v-if="!isUserAuthorized" @click="openLoginModal()">
-        <font-awesome-icon :icon="['far', 'envelope']" class="button__icon-with-text"/>
+      <button 
+        v-if="!isUserAuthorized" 
+        class="button button--contact" 
+        @click="openLoginModal()">
+        <i class="far fa-envelope button__icon-with-text"/>
         Contact
       </button>
-      <button class="button button--apo"  v-if="isUserAuthorized && !hasUserReserved" @click="openAppointmentModal()">
-        <i class="far fa-envelope"></i>
+      <button 
+        v-if="isUserAuthorized && !hasUserReserved" 
+        class="button button--apo" 
+        @click="openAppointmentModal()">
+        <i class="far fa-envelope"/>
         面談を予約
       </button>
     </div>
     <div class="right-area">
-      <router-link class="button button--personal" :to="{ name: 'AboutMe' }" :selected="paginationState.isInAboutMePage">
-        <font-awesome-icon :icon="['fas', 'user']" class="button__icon-with-text"/>
+      <router-link 
+        :to="{ name: 'AboutMe' }" 
+        :selected="paginationState.isInAboutMePage" 
+        class="button button--personal">
+        <i class="fas fa-user button__icon-with-text"/>
         <span class="button-text-shrinkable">私について</span>
       </router-link>
-      <router-link class="button button--quitting" :to="{ name: 'Quitting' }" :selected="paginationState.isInQuittingPage">
+      <router-link 
+        :to="{ name: 'Quitting' }" 
+        :selected="paginationState.isInQuittingPage" 
+        class="button button--quitting">
         <div class="button__icon-with-text icon-stack">
-          <font-awesome-icon :icon="['fas', 'heart']"/>
-          <font-awesome-icon :icon="['fas', 'bolt']" class="overwriting-bolt"/>
+          <i class="fas fa-heart"/>
+          <i class="fas fa-bolt overwriting-bolt"/>
         </div>
         <span class="button-text-shrinkable">転職の理由</span>
       </router-link>
-      <router-link class="button button--desire" :to="{ name: 'Desire' }" :selected="paginationState.isInDesirePage">
-        <font-awesome-icon :icon="['fas', 'heart']" class="button__icon-with-text"/>
+      <router-link 
+        :to="{ name: 'Desire' }" 
+        :selected="paginationState.isInDesirePage" 
+        class="button button--desire">
+        <i class="fas fa-heart button__icon-with-text"/>
         <span class="button-text-shrinkable">こんな風に働きたい</span>
       </router-link>
     </div>
-    <BaseModal v-if="loginModalState" @close="closeContactModal()">
+    <!-- TODO -->
+    <!-- <BaseModal v-if="loginModalState" @close="closeContactModal()">
       <BaseContact/>
     </BaseModal>
     <BaseModal v-if="ApoModalState" @close="closeAppointmentModal()">
       <BaseAppointment/>
-    </BaseModal>
+    </BaseModal> -->
   </header>
 </template>
 
 <script>
-import BaseModal from '@/components/modals/BaseModal'
-import BaseContact from '@/components/modals/contact/BaseContact'
-import BaseAppointment from '@/components/modals/appointment/BaseAppointment'
+// import BaseModal from '@/components/modals/BaseModal'
+// import BaseContact from '@/components/modals/contact/BaseContact'
+// import BaseAppointment from '@/components/modals/appointment/BaseAppointment'
 import { setTimeout } from 'timers'
 import { mapState } from 'vuex'
 
 export default {
   name: 'Header',
-  components: {
-    BaseModal,
-    BaseContact,
-    BaseAppointment
+  // components: {
+  //   BaseModal,
+  //   BaseContact,
+  //   BaseAppointment
+  // },
+  props: {
+    // TODO: middleware + Vuexに変更
+    paginationState: {
+      type: Object,
+      default: () => {
+        return {
+          isInAboutMePage: false,
+          isInQuittingPage: false,
+          isInDesirePage: false
+        }
+      }
+    }
   },
-  props: [ 'paginationState' ],
   data () {
     return {
       loginModalState: false,
@@ -62,6 +90,14 @@ export default {
       'isUserAuthorized',
       'hasUserReserved'
     ])
+  },
+  computed: {
+    isUserAuthorized: function () {
+      return false
+    },
+    hasUserReserved: function () {
+      return false
+    }
   },
   methods: {
     openLoginModal () {
@@ -196,13 +232,13 @@ export default {
   }
   .overwriting-bolt {
     color: #3E5A72;
-    font-size:0.6rem;
-    transform:scale(1,2);
+    transform:scale(0.5,1);
     transition: color .3s;
   }
   .icon-stack {
     position: relative;
     width: 1em;
+    height: 1em;
   }
   .icon-stack > * {
     position: absolute;

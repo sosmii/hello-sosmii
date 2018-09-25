@@ -5,8 +5,7 @@
     "noImplicitReturns": true,
     "outDir": "lib",
     "sourceMap": true,
-    "target": "es6",
-    "allowJs": true
+    "target": "es6"
   },
   "compileOnSave": true,
   "include": [
