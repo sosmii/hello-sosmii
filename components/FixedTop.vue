@@ -1,10 +1,13 @@
 <template>
-  <div/>
-  <!-- <div class="top-container" id="top">
+  <div 
+    id="top" 
+    class="top-container">
     <div class="portrait-area">
       <div class="portrait-area__msg">
         <div class="typewriter-effect">
-          Hello, I'm <span class="link" @click="openLinkModal()">sosmii</span> !
+          Hello, I'm <span 
+            class="link" 
+            @click="openLinkModal()">sosmii</span> !
         </div>
       </div>
       <div class="portrait-area__portrait">
@@ -12,44 +15,64 @@
       </div>
     </div>
     <div class="button-wrapper">
-      <router-link class="button button--personal" :to="{ name: 'AboutMe' }" :selected="paginationState.isInAboutMePage">
+      <router-link 
+        :to="{ name: 'AboutMe' }" 
+        :selected="paginationState.isInAboutMePage" 
+        class="button button--personal">
         <div class="button__icon">
-          <font-awesome-icon :icon="['fas', 'user']"/>
+          <i class="fas fa-user"/>
         </div>
         <div class="button__text">私について</div>
       </router-link>
-      <router-link class="button button--quitting" :to="{ name: 'Quitting' }" :selected="paginationState.isInQuittingPage">
+      <router-link 
+        :to="{ name: 'Quitting' }" 
+        :selected="paginationState.isInQuittingPage" 
+        class="button button--quitting">
         <div class="button__icon">
-          <font-awesome-icon :icon="['fas', 'heart']"/>
-          <font-awesome-icon :icon="['fas', 'bolt']" class="overwriting-bolt"/>
+          <i class="fas fa-heart"/>
+          <i class="fas fa-bolt overwriting-bolt"/>
         </div>
         <div class="button__text">転職の理由</div>
       </router-link>
-        <router-link class="button button--desire" :to="{ name: 'Desire' }" :selected="paginationState.isInDesirePage">
-          <div class="button__icon">
-            <font-awesome-icon :icon="['fas', 'heart']"/>
-          </div>
-          <div class="button__text">こんな風に働きたい</div>
-        </router-link>
+      <router-link 
+        :to="{ name: 'Desire' }" 
+        :selected="paginationState.isInDesirePage" 
+        class="button button--desire">
+        <div class="button__icon">
+          <i class="fas fa-heart"/>
+        </div>
+        <div class="button__text">こんな風に働きたい</div>
+      </router-link>
     </div>
-    <BaseModal v-if="linkModalState" @close="closeLinkModal()">
+    <!-- <BaseModal v-if="linkModalState" @close="closeLinkModal()">
       <LinkModal/>
-    </BaseModal>
-  </div> -->
+    </BaseModal> -->
+  </div>
 </template>
 
 <script>
-/*
-import BaseModal from '@/components/modals/BaseModal'
-import LinkModal from '@/components/modals/LinkModal'
+// import BaseModal from '@/components/modals/BaseModal'
+// import LinkModal from '@/components/modals/LinkModal'
 
 export default {
   name: 'FixedTop',
-  components: {
-    BaseModal,
-    LinkModal
+  // components: {
+  //   BaseModal,
+  //   LinkModal
+  // },
+  props: {
+    // TODO: middleware + Vuexに変更
+    paginationState: {
+      type: Object,
+      default: () => {
+        return {
+          isInAboutMePage: false,
+          isInQuittingPage: false,
+          isInDesirePage: false
+        }
+      }
+    }
   },
-  props: [ 'paginationState' ],
   data () {
     return {
       linkModalState: false
@@ -64,20 +87,9 @@ export default {
     }
   }
 }
-*/
 </script>
 
 <style scoped>
-/* @keyframes on-load-popup {
-  from {
-    opacity: 0;
-    transform: translateY(40%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-} */
 @keyframes step {
   from {
     width: 0;
@@ -152,7 +164,6 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
-    /* animation: on-load-popup 1s ease; */
   }
   .button {
     display: flex;
@@ -200,8 +211,8 @@ export default {
   }
   .overwriting-bolt {
     color: white;
-    font-size:2rem;
-    transform:scale(1,2);
+    font-size:4rem;
+    transform:scale(0.5,1);
     transition: color .3s;
   }
   .button--quitting:hover .overwriting-bolt,
