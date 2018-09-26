@@ -15,34 +15,34 @@
       </div>
     </div>
     <div class="button-wrapper">
-      <router-link 
-        :to="{ name: 'AboutMe' }" 
+      <nuxt-link 
         :selected="paginationState.isInAboutMePage" 
+        to="/aboutMe" 
         class="button button--personal">
         <div class="button__icon">
           <i class="fas fa-user"/>
         </div>
         <div class="button__text">私について</div>
-      </router-link>
-      <router-link 
-        :to="{ name: 'Quitting' }" 
+      </nuxt-link>
+      <nuxt-link 
         :selected="paginationState.isInQuittingPage" 
+        to="/reason4Quitting" 
         class="button button--quitting">
         <div class="button__icon">
           <i class="fas fa-heart"/>
           <i class="fas fa-bolt overwriting-bolt"/>
         </div>
         <div class="button__text">転職の理由</div>
-      </router-link>
-      <router-link 
-        :to="{ name: 'Desire' }" 
+      </nuxt-link>
+      <nuxt-link 
         :selected="paginationState.isInDesirePage" 
+        to="/desire" 
         class="button button--desire">
         <div class="button__icon">
           <i class="fas fa-heart"/>
         </div>
         <div class="button__text">こんな風に働きたい</div>
-      </router-link>
+      </nuxt-link>
     </div>
     <!-- <BaseModal v-if="linkModalState" @close="closeLinkModal()">
       <LinkModal/>

@@ -17,30 +17,30 @@
       </button>
     </div>
     <div class="right-area">
-      <router-link 
-        :to="{ name: 'AboutMe' }" 
+      <nuxt-link 
         :selected="paginationState.isInAboutMePage" 
+        to="/aboutMe" 
         class="button button--personal">
         <i class="fas fa-user button__icon-with-text"/>
         <span class="button-text-shrinkable">私について</span>
-      </router-link>
-      <router-link 
-        :to="{ name: 'Quitting' }" 
+      </nuxt-link>
+      <nuxt-link 
         :selected="paginationState.isInQuittingPage" 
+        to="reason4Quitting" 
         class="button button--quitting">
         <div class="button__icon-with-text icon-stack">
           <i class="fas fa-heart"/>
           <i class="fas fa-bolt overwriting-bolt"/>
         </div>
         <span class="button-text-shrinkable">転職の理由</span>
-      </router-link>
-      <router-link 
-        :to="{ name: 'Desire' }" 
+      </nuxt-link>
+      <nuxt-link 
         :selected="paginationState.isInDesirePage" 
+        to="desire" 
         class="button button--desire">
         <i class="fas fa-heart button__icon-with-text"/>
         <span class="button-text-shrinkable">こんな風に働きたい</span>
-      </router-link>
+      </nuxt-link>
     </div>
     <!-- TODO -->
     <!-- <BaseModal v-if="loginModalState" @close="closeContactModal()">

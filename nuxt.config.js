@@ -69,6 +69,7 @@ module.exports = {
   },
 
   router: {
-    middleware: 'path'
+    middleware: 'path',
+    scrollBehavior: () => { return false }
   }
 }
