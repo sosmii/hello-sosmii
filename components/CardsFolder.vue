@@ -1,12 +1,5 @@
 <template>
-  <div
-    :class="[
-      { 'background-yellow': paginationState.isInAboutMePage },
-      { 'background-blue': paginationState.isInQuittingPage },
-      { 'background-red': paginationState.isInDesirePage }
-    ]"
-    class="cards-folder"
-  >
+  <div class="cards-folder">
     <h1 id="page-title">{{ pageTitle }}</h1>
     <div
       v-for="(card, index) in cards"
@@ -34,17 +27,6 @@ export default {
   //   BaseModal
   // },
   props: {
-    // TODO: middleware + Vuexに変更
-    paginationState: {
-      type: Object,
-      default: () => {
-        return {
-          isInAboutMePage: false,
-          isInQuittingPage: false,
-          isInDesirePage: false
-        }
-      }
-    },
     jsonData: {
       type: Object,
       default: () => {
