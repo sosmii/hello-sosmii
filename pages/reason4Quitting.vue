@@ -6,16 +6,16 @@
 
 <script>
 import cardsFolder from '~/components/CardsFolder'
-import quittingJson from '~/assets/quitting-public.json'
+import { mapState } from 'vuex'
 
 export default {
   components: {
     cardsFolder
   },
-  data () {
-    return {
-      jsonData: quittingJson
-    }
+  computed: {
+    ...mapState('jsonData', {
+      jsonData: 'quitting'
+    })
   }
 }
 </script>

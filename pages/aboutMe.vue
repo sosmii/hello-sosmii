@@ -6,16 +6,16 @@
 
 <script>
 import cardsFolder from '~/components/CardsFolder'
-import personalJson from '~/assets/personal-public.json'
+import { mapState } from 'vuex'
 
 export default {
   components: {
     cardsFolder
   },
-  data () {
-    return {
-      jsonData: personalJson
-    }
+  computed: {
+    ...mapState('jsonData', {
+      jsonData: 'personal'
+    })
   }
 }
 </script>

@@ -17,11 +17,12 @@
     "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
     "@nuxtjs/dotenv": "^1.1.1",
     "cross-env": "^5.2.0",
-    "element-ui": "^2.4.5",
+    "element-ui": "^2.4.7",
     "firebase": "5.1.0",
     "moment-timezone": "^0.5.21",
     "normalize.css": "^8.0.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-loaders": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",

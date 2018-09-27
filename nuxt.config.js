@@ -33,12 +33,16 @@ module.exports = {
     '@fortawesome/fontawesome-free-webfonts/css/fa-brands.css',
     '@fortawesome/fontawesome-free-webfonts/css/fa-regular.css',
     '@fortawesome/fontawesome-free-webfonts/css/fa-solid.css',
+    'element-ui/lib/theme-chalk/index.css'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/vue-loaders',
+    '~/plugins/element-ui',
+    '~/plugins/firebase-auth-watcher'
   ],
 
   /*

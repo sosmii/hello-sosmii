@@ -14,18 +14,18 @@
         v-html="card.body"/>
       <div class="card__expand-fake-button"/>
     </div>
-    <!-- <BaseModal v-if="whileLoading"/> -->
+    <BaseModal v-if="whileLoading"/>
   </div>
 </template>
 
 <script>
-// import BaseModal from '@/components/modals/BaseModal'
+import BaseModal from '@/components/modals/BaseModal'
 import { setTimeout } from 'timers'
 
 export default {
-  // components: {
-  //   BaseModal
-  // },
+  components: {
+    BaseModal
+  },
   props: {
     jsonData: {
       type: Object,

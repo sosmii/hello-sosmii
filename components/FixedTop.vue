@@ -44,22 +44,24 @@
         <div class="button__text">こんな風に働きたい</div>
       </nuxt-link>
     </div>
-    <!-- <BaseModal v-if="linkModalState" @close="closeLinkModal()">
+    <BaseModal 
+      v-if="linkModalState" 
+      @close="closeLinkModal()">
       <LinkModal/>
-    </BaseModal> -->
+    </BaseModal>
   </div>
 </template>
 
 <script>
-// import BaseModal from '@/components/modals/BaseModal'
-// import LinkModal from '@/components/modals/LinkModal'
+import BaseModal from '@/components/modals/BaseModal'
+import LinkModal from '@/components/modals/LinkModal'
 
 export default {
   name: 'FixedTop',
-  // components: {
-  //   BaseModal,
-  //   LinkModal
-  // },
+  components: {
+    BaseModal,
+    LinkModal
+  },
   props: {
     // TODO: middleware + Vuexに変更
     paginationState: {

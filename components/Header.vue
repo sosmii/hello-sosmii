@@ -12,7 +12,6 @@
         v-if="isUserAuthorized && !hasUserReserved" 
         class="button button--apo" 
         @click="openAppointmentModal()">
-        <i class="far fa-envelope"/>
         面談を予約
       </button>
     </div>
@@ -42,30 +41,33 @@
         <span class="button-text-shrinkable">こんな風に働きたい</span>
       </nuxt-link>
     </div>
-    <!-- TODO -->
-    <!-- <BaseModal v-if="loginModalState" @close="closeContactModal()">
+    <BaseModal 
+      v-if="loginModalState" 
+      @close="closeContactModal()">
       <BaseContact/>
     </BaseModal>
-    <BaseModal v-if="ApoModalState" @close="closeAppointmentModal()">
+    <BaseModal 
+      v-if="ApoModalState" 
+      @close="closeAppointmentModal()">
       <BaseAppointment/>
-    </BaseModal> -->
+    </BaseModal>
   </header>
 </template>
 
 <script>
-// import BaseModal from '@/components/modals/BaseModal'
-// import BaseContact from '@/components/modals/contact/BaseContact'
-// import BaseAppointment from '@/components/modals/appointment/BaseAppointment'
+import BaseModal from '@/components/modals/BaseModal'
+import BaseContact from '@/components/modals/contact/BaseContact'
+import BaseAppointment from '@/components/modals/appointment/BaseAppointment'
 import { setTimeout } from 'timers'
 import { mapState } from 'vuex'
 
 export default {
   name: 'Header',
-  // components: {
-  //   BaseModal,
-  //   BaseContact,
-  //   BaseAppointment
-  // },
+  components: {
+    BaseModal,
+    BaseContact,
+    BaseAppointment
+  },
   props: {
     // TODO: middleware + Vuexに変更
     paginationState: {
@@ -85,30 +87,23 @@ export default {
       ApoModalState: false
     }
   },
+  // TODO: storeの変更する時にやる
   computed: {
     ...mapState([
       'isUserAuthorized',
       'hasUserReserved'
     ])
   },
-  computed: {
-    isUserAuthorized: function () {
-      return false
-    },
-    hasUserReserved: function () {
-      return false
-    }
-  },
   methods: {
     openLoginModal () {
-      if (this.$route.name === 'DummyTop') {
+      if (this.$route.path === '/') {
         this.loginModalState = true
         return
       }
 
       this.scrollToTop()
       setTimeout(() => {
-        this.$router.push({ name: 'DummyTop' })
+        this.$router.push('/')
         this.loginModalState = true
       }, 500)
     },
@@ -116,14 +111,14 @@ export default {
       this.loginModalState = false
     },
     openAppointmentModal () {
-      if (this.$route.name === 'DummyTop') {
+      if (this.$route.path === '/') {
         this.ApoModalState = true
         return
       }
 
       this.scrollToTop()
       setTimeout(() => {
-        this.$router.push({ name: 'DummyTop' })
+        this.$router.push('/')
         this.ApoModalState = true
       }, 500)
     },

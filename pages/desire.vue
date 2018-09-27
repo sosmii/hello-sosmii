@@ -6,16 +6,16 @@
 
 <script>
 import cardsFolder from '~/components/CardsFolder'
-import desireJson from '~/assets/desire-public.json'
+import { mapState } from 'vuex'
 
 export default {
   components: {
     cardsFolder
   },
-  data () {
-    return {
-      jsonData: desireJson
-    }
+  computed: {
+    ...mapState('jsonData', {
+      jsonData: 'desire'
+    })
   }
 }
 </script>
