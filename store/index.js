@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import jsonData from '~/store/modules/json-data'
+import paginationState from '~/store/modules/pagination-state'
 
 export default () => new Vuex.Store({
   // TODO: モジュール分け
@@ -28,6 +29,7 @@ export default () => new Vuex.Store({
     }
   },
   modules: {
-    jsonData
+    jsonData,
+    paginationState
   }
 })

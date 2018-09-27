@@ -14,7 +14,8 @@ export default {
   components: {
     Header,
     FixedTop
-  }
+  },
+  middleware: ['pagination-state']
 }
 </script>
 

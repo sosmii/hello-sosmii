@@ -16,7 +16,7 @@
     </div>
     <div class="button-wrapper">
       <nuxt-link 
-        :selected="paginationState.isInAboutMePage" 
+        :selected="isInAboutMePage" 
         to="/aboutMe" 
         class="button button--personal">
         <div class="button__icon">
@@ -25,7 +25,7 @@
         <div class="button__text">私について</div>
       </nuxt-link>
       <nuxt-link 
-        :selected="paginationState.isInQuittingPage" 
+        :selected="isInQuittingPage" 
         to="/reason4Quitting" 
         class="button button--quitting">
         <div class="button__icon">
@@ -35,7 +35,7 @@
         <div class="button__text">転職の理由</div>
       </nuxt-link>
       <nuxt-link 
-        :selected="paginationState.isInDesirePage" 
+        :selected="isInDesirePage" 
         to="/desire" 
         class="button button--desire">
         <div class="button__icon">
@@ -55,6 +55,7 @@
 <script>
 import BaseModal from '@/components/modals/BaseModal'
 import LinkModal from '@/components/modals/LinkModal'
+import { mapState } from 'vuex'
 
 export default {
   name: 'FixedTop',
@@ -62,23 +63,17 @@ export default {
     BaseModal,
     LinkModal
   },
-  props: {
-    // TODO: middleware + Vuexに変更
-    paginationState: {
-      type: Object,
-      default: () => {
-        return {
-          isInAboutMePage: false,
-          isInQuittingPage: false,
-          isInDesirePage: false
-        }
-      }
-    }
-  },
   data () {
     return {
       linkModalState: false
     }
+  },
+  computed: {
+    ...mapState('paginationState', [
+      'isInAboutMePage',
+      'isInQuittingPage',
+      'isInDesirePage'
+    ])
   },
   methods: {
     openLinkModal () {

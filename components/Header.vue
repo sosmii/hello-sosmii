@@ -17,14 +17,14 @@
     </div>
     <div class="right-area">
       <nuxt-link 
-        :selected="paginationState.isInAboutMePage" 
+        :selected="isInAboutMePage" 
         to="/aboutMe" 
         class="button button--personal">
         <i class="fas fa-user button__icon-with-text"/>
         <span class="button-text-shrinkable">私について</span>
       </nuxt-link>
       <nuxt-link 
-        :selected="paginationState.isInQuittingPage" 
+        :selected="isInQuittingPage" 
         to="reason4Quitting" 
         class="button button--quitting">
         <div class="button__icon-with-text icon-stack">
@@ -34,7 +34,7 @@
         <span class="button-text-shrinkable">転職の理由</span>
       </nuxt-link>
       <nuxt-link 
-        :selected="paginationState.isInDesirePage" 
+        :selected="isInDesirePage" 
         to="desire" 
         class="button button--desire">
         <i class="fas fa-heart button__icon-with-text"/>
@@ -68,19 +68,6 @@ export default {
     BaseContact,
     BaseAppointment
   },
-  props: {
-    // TODO: middleware + Vuexに変更
-    paginationState: {
-      type: Object,
-      default: () => {
-        return {
-          isInAboutMePage: false,
-          isInQuittingPage: false,
-          isInDesirePage: false
-        }
-      }
-    }
-  },
   data () {
     return {
       loginModalState: false,
@@ -92,6 +79,11 @@ export default {
     ...mapState([
       'isUserAuthorized',
       'hasUserReserved'
+    ]),
+    ...mapState('paginationState', [
+      'isInAboutMePage',
+      'isInQuittingPage',
+      'isInDesirePage'
     ])
   },
   methods: {
