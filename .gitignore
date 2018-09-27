@@ -1,17 +1,16 @@
 .DS_Store
 .firebase
-node_modules/
-dist/
+.nuxt
+node_modules
+dist
 functions/lib/
-functions/node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Editor directories and files
-.idea
+# Log
+npm-debug.log
+firebase-debug.log
+
+# IDE
 .vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+
+# Env Files
+*.env
