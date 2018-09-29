@@ -190,7 +190,7 @@ export default {
           place: this.place
         })
 
-        this.$store.commit('updateReservationState', true)
+        this.$store.commit('authState/updateReservationState', true)
         this.$emit('done')
       } catch (err) {
         this.$emit('error')

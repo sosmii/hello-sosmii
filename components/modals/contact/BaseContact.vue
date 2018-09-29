@@ -20,7 +20,7 @@ export default {
     CompleteContact
   },
   computed: {
-    ...mapState([
+    ...mapState('authState', [
       'isUserLoggedIn',
       'isUserRegistered',
       'isUserAuthorized'

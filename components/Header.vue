@@ -74,9 +74,8 @@ export default {
       ApoModalState: false
     }
   },
-  // TODO: storeの変更する時にやる
   computed: {
-    ...mapState([
+    ...mapState('authState', [
       'isUserAuthorized',
       'hasUserReserved'
     ]),

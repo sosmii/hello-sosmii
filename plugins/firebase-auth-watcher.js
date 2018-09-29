@@ -6,20 +6,20 @@ import { fireAuth, fireFunc } from '~/plugins/firebase-setting'
 export default ({ store }, inject) => {
   fireAuth.onAuthStateChanged(async user => {
     if (!user) {
-      store.commit('updateLoginState', false)
-      store.commit('updateRegisterState', false)
-      store.commit('updateAuthorizedState', false)
-      store.commit('updateReservationState', false)
+      store.commit('authState/updateLoginState', false)
+      store.commit('authState/updateRegisterState', false)
+      store.commit('authState/updateAuthorizedState', false)
+      store.commit('authState/updateReservationState', false)
 
       updateCardsDataWithAssets(store)
       return
     }
 
     const userState = await getUserState()
-    store.commit('updateLoginState', true)
-    store.commit('updateRegisterState', userState.isRegistered)
-    store.commit('updateAuthorizedState', userState.isAuthorized)
-    store.commit('updateReservationState', userState.hasReserved)
+    store.commit('authState/updateLoginState', true)
+    store.commit('authState/updateRegisterState', userState.isRegistered)
+    store.commit('authState/updateAuthorizedState', userState.isAuthorized)
+    store.commit('authState/updateReservationState', userState.hasReserved)
     store.commit('setGithubId', user.providerData[0].uid)
 
     if (!userState.isAuthorized) {

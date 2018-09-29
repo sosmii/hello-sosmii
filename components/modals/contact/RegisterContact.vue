@@ -89,7 +89,7 @@ export default {
         githubId: this.githubId
       })
 
-      this.$store.commit('updateRegisterState', true)
+      this.$store.commit('authState/updateRegisterState', true)
     },
     showLoadingIcon () {
       this.whileLoading = true
