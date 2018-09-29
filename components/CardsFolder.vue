@@ -12,60 +12,60 @@
 </template>
 
 <script>
-import BaseModal from '@/components/modals/BaseModal'
-import Cards from '~/components/Cards'
-import { setTimeout } from 'timers'
+import BaseModal from '@/components/modals/BaseModal';
+import Cards from '~/components/Cards';
+import { setTimeout } from 'timers';
 
 export default {
   components: {
     BaseModal,
-    Cards
+    Cards,
   },
   props: {
     jsonData: {
       type: Object,
       default: () => {
-        return null
-      }
-    }
+        return null;
+      },
+    },
   },
   computed: {
-    whileLoading () {
-      return (!this.jsonData)
+    whileLoading() {
+      return !this.jsonData;
     },
-    pageTitle () {
+    pageTitle() {
       if (!this.jsonData) {
-        return null
+        return null;
       }
 
-      return this.jsonData.pageTitle
+      return this.jsonData.pageTitle;
     },
-    cards () {
+    cards() {
       if (!this.jsonData) {
-        return null
+        return null;
       }
 
-      return this.jsonData.cardsData
-    }
+      return this.jsonData.cardsData;
+    },
   },
-  mounted () {
-    this.scrollToTitle()
+  mounted() {
+    this.scrollToTitle();
   },
   methods: {
-    scrollToTitle () {
+    scrollToTitle() {
       setTimeout(() => {
-        const elem = document.getElementById('page-title')
+        const elem = document.getElementById('page-title');
 
         if (elem) {
           elem.scrollIntoView({
             behavior: 'smooth',
-            block: 'start'
-          })
+            block: 'start',
+          });
         }
-      }, 500)
-    }
-  }
-}
+      }, 500);
+    },
+  },
+};
 </script>
 
 <style scoped>

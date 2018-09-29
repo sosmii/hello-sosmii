@@ -9,11 +9,20 @@ module.exports = {
   },
   extends: [
     'plugin:vue/recommended',
+    'plugin:prettier/recommended'
   ],
   // required to lint *.vue files
   plugins: [
     'vue'
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "es5"
+      }
+    ]
+  }
 }

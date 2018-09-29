@@ -1,4 +1,4 @@
-const pkg = require('./package')
+const pkg = require('./package');
 
 module.exports = {
   mode: 'spa',
@@ -11,11 +11,9 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   /*
@@ -33,7 +31,7 @@ module.exports = {
     '@fortawesome/fontawesome-free-webfonts/css/fa-brands.css',
     '@fortawesome/fontawesome-free-webfonts/css/fa-regular.css',
     '@fortawesome/fontawesome-free-webfonts/css/fa-solid.css',
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
   ],
 
   /*
@@ -42,15 +40,13 @@ module.exports = {
   plugins: [
     '~/plugins/vue-loaders',
     '~/plugins/element-ui',
-    '~/plugins/firebase-auth-watcher'
+    '~/plugins/firebase-auth-watcher',
   ],
 
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    '@nuxtjs/dotenv'
-  ],
+  modules: ['@nuxtjs/dotenv'],
 
   /*
   ** Build configuration
@@ -66,13 +62,15 @@ module.exports = {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
+          exclude: /(node_modules)/,
+        });
       }
-    }
+    },
   },
 
   router: {
-    scrollBehavior: () => { return false }
-  }
-}
+    scrollBehavior: () => {
+      return false;
+    },
+  },
+};

@@ -7,16 +7,16 @@
 </template>
 
 <script>
-import Header from '~/components/Header'
-import FixedTop from '~/components/FixedTop'
+import Header from '~/components/Header';
+import FixedTop from '~/components/FixedTop';
 
 export default {
   components: {
     Header,
-    FixedTop
+    FixedTop,
   },
-  middleware: ['pagination-state']
-}
+  middleware: ['pagination-state'],
+};
 </script>
 
 <style>

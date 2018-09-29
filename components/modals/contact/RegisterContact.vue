@@ -53,56 +53,56 @@
 </template>
 
 <script>
-import { fireFunc } from '~/plugins/firebase-setting'
-import { mapState } from 'vuex'
+import { fireFunc } from '~/plugins/firebase-setting';
+import { mapState } from 'vuex';
 
 export default {
   name: 'RegisterContact',
-  data () {
+  data() {
     return {
       pic: null,
       companyName: null,
       companyHp: null,
       message: null,
-      whileLoading: false
-    }
+      whileLoading: false,
+    };
   },
   computed: {
-    ...mapState(['githubId'])
+    ...mapState(['githubId']),
   },
   methods: {
-    clickRegister () {
+    clickRegister() {
       if (!this.pic || !this.companyName || !this.companyHp) {
-        return
+        return;
       }
 
-      this.showLoadingIcon()
-      this.sendRegister()
+      this.showLoadingIcon();
+      this.sendRegister();
     },
-    async sendRegister () {
-      const registerFunc = fireFunc.httpsCallable('register')
+    async sendRegister() {
+      const registerFunc = fireFunc.httpsCallable('register');
       await registerFunc({
         pic: this.pic,
         companyName: this.companyName,
         companyHp: this.companyHp,
         message: this.message,
-        githubId: this.githubId
-      })
+        githubId: this.githubId,
+      });
 
-      this.$store.commit('authState/updateRegisterState', true)
+      this.$store.commit('authState/updateRegisterState', true);
     },
-    showLoadingIcon () {
-      this.whileLoading = true
-    }
-  }
-}
+    showLoadingIcon() {
+      this.whileLoading = true;
+    },
+  },
+};
 </script>
 
 <style scoped>
 .register-modal__header {
   flex: 0;
   flex-basis: 8vh;
-  background-color: #3E5A72;
+  background-color: #3e5a72;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,16 +150,16 @@ export default {
   width: 50px;
   height: 50px;
   border-radius: 27px;
-  background-color: #3E5A72;
-  border: 2px solid #3E5A72;
+  background-color: #3e5a72;
+  border: 2px solid #3e5a72;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 .button:focus {
-    outline: 0;
+  outline: 0;
 }
 .button:hover {
   background: white;
@@ -167,12 +167,12 @@ export default {
 .button__icon {
   color: white;
   font-size: 1.5em;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
 .button:hover > .button__icon {
-  color: #3E5A72;
+  color: #3e5a72;
 }
 .line-spin-fade-loader >>> * {
-  background-color: #3E5A72;
+  background-color: #3e5a72;
 }
 </style>

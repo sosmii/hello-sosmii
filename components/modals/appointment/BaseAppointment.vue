@@ -12,23 +12,23 @@
 </template>
 
 <script>
-import MakeAppointment from '@/components/modals/appointment/MakeAppointment'
-import CompleteAppointment from '@/components/modals/appointment/CompleteAppointment'
-import ErrorAppointment from '@/components/modals/appointment/ErrorAppointment'
+import MakeAppointment from '@/components/modals/appointment/MakeAppointment';
+import CompleteAppointment from '@/components/modals/appointment/CompleteAppointment';
+import ErrorAppointment from '@/components/modals/appointment/ErrorAppointment';
 
 export default {
   name: 'BaseAppointment',
   components: {
     MakeAppointment,
     CompleteAppointment,
-    ErrorAppointment
+    ErrorAppointment,
   },
-  data () {
+  data() {
     return {
-      step: 1
-    }
-  }
-}
+      step: 1,
+    };
+  },
+};
 </script>
 
 <style scoped>

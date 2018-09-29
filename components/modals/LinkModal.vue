@@ -17,22 +17,22 @@
 
 <script>
 export default {
-  name: 'LinkModal'
-}
+  name: 'LinkModal',
+};
 </script>
 
 <style scoped>
-  .link-modal {
-    background-color: #F8F8F8;
-    width: 300px;
-    height: 200px;
-    max-width: 80vmin;
-    max-height: 80vmin;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .link-icon {
-    margin: 0 10px;
-  }
+.link-modal {
+  background-color: #f8f8f8;
+  width: 300px;
+  height: 200px;
+  max-width: 80vmin;
+  max-height: 80vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.link-icon {
+  margin: 0 10px;
+}
 </style>

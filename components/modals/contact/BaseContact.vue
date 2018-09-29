@@ -7,37 +7,37 @@
 </template>
 
 <script>
-import LoginContact from '@/components/modals/contact/LoginContact'
-import RegisterContact from '@/components/modals/contact/RegisterContact'
-import CompleteContact from '@/components/modals/contact/CompleteContact'
-import { mapState } from 'vuex'
+import LoginContact from '@/components/modals/contact/LoginContact';
+import RegisterContact from '@/components/modals/contact/RegisterContact';
+import CompleteContact from '@/components/modals/contact/CompleteContact';
+import { mapState } from 'vuex';
 
 export default {
   name: 'BaseContact',
   components: {
     LoginContact,
     RegisterContact,
-    CompleteContact
+    CompleteContact,
   },
   computed: {
     ...mapState('authState', [
       'isUserLoggedIn',
       'isUserRegistered',
-      'isUserAuthorized'
+      'isUserAuthorized',
     ]),
-    step () {
+    step() {
       if (!this.isUserLoggedIn) {
-        return 'login'
+        return 'login';
       }
 
       if (this.isUserLoggedIn && !this.isUserRegistered) {
-        return 'register'
+        return 'register';
       }
 
-      return 'complete'
-    }
-  }
-}
+      return 'complete';
+    },
+  },
+};
 </script>
 
 <style scoped>

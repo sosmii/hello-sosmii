@@ -87,12 +87,12 @@
 </template>
 
 <script>
-import * as moment from 'moment-timezone'
-import { fireFunc } from '~/plugins/firebase-setting'
+import * as moment from 'moment-timezone';
+import { fireFunc } from '~/plugins/firebase-setting';
 
 export default {
   name: 'MakeAppointment',
-  data () {
+  data() {
     return {
       apoDate: null,
       apoType: null,
@@ -103,111 +103,126 @@ export default {
       iconsSelected: false,
       whileLoading: false,
       reserveTime: null,
-      place: null
-    }
+      place: null,
+    };
   },
   computed: {
-    pickerOption () {
-      const reservedDates = this.calcedReservedDates
+    pickerOption() {
+      const reservedDates = this.calcedReservedDates;
 
       return {
-        disabledDate (time) {
-          const targetDate = moment(time, 'ddd MMM DD YYYY').tz('Asia/Tokyo').startOf('day')
-          const threeDaysLater = moment().tz('Asia/Tokyo').startOf('day').add(3, 'days')
-          const twoWeeksLater = moment().tz('Asia/Tokyo').startOf('day').add(14, 'days')
+        disabledDate(time) {
+          const targetDate = moment(time, 'ddd MMM DD YYYY')
+            .tz('Asia/Tokyo')
+            .startOf('day');
+          const threeDaysLater = moment()
+            .tz('Asia/Tokyo')
+            .startOf('day')
+            .add(3, 'days');
+          const twoWeeksLater = moment()
+            .tz('Asia/Tokyo')
+            .startOf('day')
+            .add(14, 'days');
 
-          if (targetDate.isBefore(threeDaysLater) || targetDate.isAfter(twoWeeksLater)) {
-            return true
+          if (
+            targetDate.isBefore(threeDaysLater) ||
+            targetDate.isAfter(twoWeeksLater)
+          ) {
+            return true;
           }
 
           for (let elem of reservedDates) {
-            const date = moment(elem, 'YYYY/MM/DD').tz('Asia/Tokyo').startOf('day')
+            const date = moment(elem, 'YYYY/MM/DD')
+              .tz('Asia/Tokyo')
+              .startOf('day');
 
             if (targetDate.isSame(date)) {
-              return true
+              return true;
             }
           }
 
-          return false
-        }
-      }
+          return false;
+        },
+      };
     },
-    disabledCondition () {
+    disabledCondition() {
       if (!this.apoType) {
-        return true
+        return true;
       }
 
-      if ((this.apoType === 'office' || this.apoType === 'lunch') &&
-        (!this.apoDate || !this.place)) {
-        return true
+      if (
+        (this.apoType === 'office' || this.apoType === 'lunch') &&
+        (!this.apoDate || !this.place)
+      ) {
+        return true;
       }
 
       if (this.apoType === 'skype' && !this.apoDate) {
-        return true
+        return true;
       }
 
-      return false
-    }
+      return false;
+    },
   },
-  created () {
-    this.getReservedDates()
+  created() {
+    this.getReservedDates();
   },
   methods: {
-    async getReservedDates () {
-      const func = fireFunc.httpsCallable('getReservedDates')
+    async getReservedDates() {
+      const func = fireFunc.httpsCallable('getReservedDates');
 
-      const result = (await func()).data
-      this.reservedDatesForMeeting = result.reservedDatesForMeeting
-      this.reservedDatesForSkype = result.reservedDatesForSkype
-      this.responseReceived = true
+      const result = (await func()).data;
+      this.reservedDatesForMeeting = result.reservedDatesForMeeting;
+      this.reservedDatesForSkype = result.reservedDatesForSkype;
+      this.responseReceived = true;
     },
-    selectSkype () {
-      this.apoType = 'skype'
-      this.apoDate = null
-      this.place = null
-      this.iconsSelected = true
-      this.calcedReservedDates = this.reservedDatesForSkype
+    selectSkype() {
+      this.apoType = 'skype';
+      this.apoDate = null;
+      this.place = null;
+      this.iconsSelected = true;
+      this.calcedReservedDates = this.reservedDatesForSkype;
     },
-    selectOffice () {
-      this.apoType = 'office'
-      this.apoDate = null
-      this.iconsSelected = true
-      this.calcedReservedDates = this.reservedDatesForMeeting
+    selectOffice() {
+      this.apoType = 'office';
+      this.apoDate = null;
+      this.iconsSelected = true;
+      this.calcedReservedDates = this.reservedDatesForMeeting;
     },
-    selectLunch () {
-      this.apoType = 'lunch'
-      this.apoDate = null
-      this.iconsSelected = true
-      this.calcedReservedDates = this.reservedDatesForMeeting
+    selectLunch() {
+      this.apoType = 'lunch';
+      this.apoDate = null;
+      this.iconsSelected = true;
+      this.calcedReservedDates = this.reservedDatesForMeeting;
     },
-    async makeAppointment () {
-      const func = fireFunc.httpsCallable('makeAppointment')
+    async makeAppointment() {
+      const func = fireFunc.httpsCallable('makeAppointment');
 
       try {
         await func({
           type: this.apoType,
           date: this.apoDate,
-          place: this.place
-        })
+          place: this.place,
+        });
 
-        this.$store.commit('authState/updateReservationState', true)
-        this.$emit('done')
+        this.$store.commit('authState/updateReservationState', true);
+        this.$emit('done');
       } catch (err) {
-        this.$emit('error')
+        this.$emit('error');
       }
     },
-    showLoadingIcon () {
-      this.whileLoading = true
-    }
-  }
-}
+    showLoadingIcon() {
+      this.whileLoading = true;
+    },
+  },
+};
 </script>
 
 <style scoped>
 .apo-modal__header {
   flex: 0;
   flex-basis: 8vh;
-  background-color: #3E5A72;
+  background-color: #3e5a72;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,7 +234,7 @@ export default {
 }
 .apo-annotation {
   margin: 1rem auto 0 auto;
-  font-size: .8em;
+  font-size: 0.8em;
 }
 .meeting-icontext-wrapper {
   width: 80%;
@@ -235,7 +250,7 @@ export default {
   font-size: 3em;
   cursor: pointer;
   color: #b4d2ed;
-  transition: color .2s linear;
+  transition: color 0.2s linear;
 }
 .fake-radio {
   display: none;
@@ -248,10 +263,10 @@ export default {
 }
 .col__text {
   margin-top: 1em;
-  font-size: .8em;
+  font-size: 0.8em;
 }
 .line-spin-fade-loader >>> * {
-  background-color: #3E5A72;
+  background-color: #3e5a72;
 }
 .loading-icon-wrapper {
   width: 55px;
@@ -268,14 +283,14 @@ export default {
   height: 50px;
   border-radius: 27px;
   margin: 30px auto 0 auto;
-  background-color: #3E5A72;
-  border: 2px solid #3E5A72;
+  background-color: #3e5a72;
+  border: 2px solid #3e5a72;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color .3s ease, opacity .5s ease,
-  border-color .3s ease, opacity .5s ease;
+  transition: background-color 0.3s ease, opacity 0.5s ease,
+    border-color 0.3s ease, opacity 0.5s ease;
 }
 .button:hover:not(.button[disabled]) {
   background: white;
@@ -288,24 +303,26 @@ export default {
 .button__icon {
   color: white;
   font-size: 1.5em;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
 .button:hover:not(.button[disabled]) > .button__icon {
-  color: #3E5A72;
+  color: #3e5a72;
 }
 .button:not([disabled]):hover {
   background: white;
 }
 .button:not([disabled]):hover > .button__icon {
-  color: #3E5A72;
+  color: #3e5a72;
 }
 .button:focus {
   outline: 0;
 }
-.v-enter-active, .v-leave-active {
-  transition: opacity .3s;
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s;
 }
-.v-enter, .v-leave-to {
+.v-enter,
+.v-leave-to {
   opacity: 0;
 }
 </style>

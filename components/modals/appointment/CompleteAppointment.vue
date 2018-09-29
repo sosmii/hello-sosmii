@@ -19,15 +19,15 @@
 
 <script>
 export default {
-  name: 'CompleteAppointment'
-}
+  name: 'CompleteAppointment',
+};
 </script>
 
 <style scoped>
 .complete-modal__header {
   flex: 0;
   flex-basis: 8vh;
-  background-color: #3E5A72;
+  background-color: #3e5a72;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +39,7 @@ export default {
 }
 .complete-icon {
   font-size: 5em;
-  color: #00FF00;
+  color: #00ff00;
   padding-top: 20px;
 }
 .complete-message {
@@ -52,7 +52,7 @@ export default {
 .address {
   opacity: 0;
   visibility: hidden;
-  transition: opacity .2s linear;
+  transition: opacity 0.2s linear;
 }
 .address.visible {
   opacity: 1;

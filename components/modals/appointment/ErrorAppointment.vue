@@ -23,18 +23,18 @@
 export default {
   name: 'ErrorAppointment',
   methods: {
-    retry () {
-      this.$emit('retry')
-    }
-  }
-}
+    retry() {
+      this.$emit('retry');
+    },
+  },
+};
 </script>
 
 <style scoped>
 .error-modal__header {
   flex: 0;
   flex-basis: 8vh;
-  background-color: #3E5A72;
+  background-color: #3e5a72;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,25 +61,25 @@ export default {
   height: 50px;
   border-radius: 27px;
   margin: 30px auto 0 auto;
-  background-color: #3E5A72;
-  border: 2px solid #3E5A72;
+  background-color: #3e5a72;
+  border: 2px solid #3e5a72;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color .3s ease, opacity .5s ease,
-  border-color .3s ease, opacity .5s ease;
+  transition: background-color 0.3s ease, opacity 0.5s ease,
+    border-color 0.3s ease, opacity 0.5s ease;
 }
 .button__icon {
   color: white;
   font-size: 1.5em;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
 .button:hover {
   background: white;
 }
 .button:hover > .button__icon {
-  color: #3E5A72;
+  color: #3e5a72;
 }
 .button:focus {
   outline: 0;

@@ -4,20 +4,20 @@ export default {
     isUserLoggedIn: false,
     isUserRegistered: false,
     isUserAuthorized: false,
-    hasUserReserved: false
+    hasUserReserved: false,
   },
   mutations: {
-    updateLoginState (state, boolean) {
-      state.isUserLoggedIn = boolean
+    updateLoginState(state, boolean) {
+      state.isUserLoggedIn = boolean;
     },
-    updateRegisterState (state, boolean) {
-      state.isUserRegistered = boolean
+    updateRegisterState(state, boolean) {
+      state.isUserRegistered = boolean;
     },
-    updateAuthorizedState (state, boolean) {
-      state.isUserAuthorized = boolean
+    updateAuthorizedState(state, boolean) {
+      state.isUserAuthorized = boolean;
     },
-    updateReservationState (state, boolean) {
-      state.hasUserReserved = boolean
-    }
-  }
-}
+    updateReservationState(state, boolean) {
+      state.hasUserReserved = boolean;
+    },
+  },
+};

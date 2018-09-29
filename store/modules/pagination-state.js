@@ -3,17 +3,17 @@ export default {
   state: {
     isInAboutMePage: false,
     isInQuittingPage: false,
-    isInDesirePage: false
+    isInDesirePage: false,
   },
   mutations: {
-    setIsInAboutMePage (state, val) {
-      state.isInAboutMePage = val
+    setIsInAboutMePage(state, val) {
+      state.isInAboutMePage = val;
     },
-    setIsInQuittingPage (state, val) {
-      state.isInQuittingPage = val
+    setIsInQuittingPage(state, val) {
+      state.isInQuittingPage = val;
     },
-    setIsInDesirePage (state, val) {
-      state.isInDesirePage = val
-    }
-  }
-}
+    setIsInDesirePage(state, val) {
+      state.isInDesirePage = val;
+    },
+  },
+};

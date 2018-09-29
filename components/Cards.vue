@@ -17,18 +17,24 @@ export default {
   props: {
     title: {
       type: String,
-      default: () => { return null }
+      default: () => {
+        return null;
+      },
     },
     body: {
       type: String,
-      default: () => { return null }
+      default: () => {
+        return null;
+      },
     },
     shouldExpand: {
       type: Boolean,
-      default: () => { return false }
-    }
-  }
-}
+      default: () => {
+        return false;
+      },
+    },
+  },
+};
 </script>
 
 
@@ -39,18 +45,18 @@ export default {
   min-height: 100px;
   max-height: 200px;
   margin-bottom: 50px;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 20px;
   overflow: hidden;
-  transition: all .2s ease-out;
-  box-shadow: 0 2px 43px -4px rgba(0,0,0,.19);
+  transition: all 0.2s ease-out;
+  box-shadow: 0 2px 43px -4px rgba(0, 0, 0, 0.19);
   text-align: left;
   cursor: pointer;
   transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
   position: relative;
 }
 .card:hover {
-  box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 .card.expand {
   max-height: 9999px;
@@ -63,12 +69,16 @@ export default {
   padding: 15px 25px 7px 25px;
 }
 .card__body {
-  border-top: 1px solid #C5CDD4;
+  border-top: 1px solid #c5cdd4;
   padding: 15px 25px 15px 25px;
   line-height: 1.5em;
 }
 .card__expand-fake-button {
-  background: linear-gradient(to bottom, rgba(255,255,255,.5), rgba(255,255,255,1));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 1)
+  );
   position: absolute;
   width: 100%;
   height: 40px;
@@ -81,8 +91,8 @@ export default {
   margin: auto;
   content: '';
   border: 0;
-  border-right: solid 2px #3E5A72;
-  border-bottom: solid 2px #3E5A72;
+  border-right: solid 2px #3e5a72;
+  border-bottom: solid 2px #3e5a72;
   transform: rotate(45deg);
 }
 .card__expand-fake-button::before {
@@ -100,7 +110,7 @@ export default {
 }
 .card__body >>> .mask {
   color: transparent;
-  text-shadow: 0 0 13px rgba(0,0,0,0.5);
+  text-shadow: 0 0 13px rgba(0, 0, 0, 0.5);
 }
 .card__body >>> .indent-1 {
   padding-left: 1em;

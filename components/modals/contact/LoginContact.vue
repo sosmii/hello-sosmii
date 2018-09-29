@@ -28,31 +28,31 @@
 </template>
 
 <script>
-import { fireAuth, githubAuthProvider } from '~/plugins/firebase-setting'
+import { fireAuth, githubAuthProvider } from '~/plugins/firebase-setting';
 
 export default {
   name: 'LoginContact',
-  data () {
+  data() {
     return {
-      whileLoading: false
-    }
+      whileLoading: false,
+    };
   },
   methods: {
-    async githubSignIn () {
-      await fireAuth.signInWithPopup(githubAuthProvider)
+    async githubSignIn() {
+      await fireAuth.signInWithPopup(githubAuthProvider);
     },
-    showLoadingIcon () {
-      this.whileLoading = true
-    }
-  }
-}
+    showLoadingIcon() {
+      this.whileLoading = true;
+    },
+  },
+};
 </script>
 
 <style scoped>
 .login-modal__header {
   flex: 0;
   flex-basis: 8vh;
-  background-color: #3E5A72;
+  background-color: #3e5a72;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +78,6 @@ export default {
   line-height: 18px;
 }
 .line-spin-fade-loader >>> * {
-  background-color: #3E5A72;
+  background-color: #3e5a72;
 }
 </style>
