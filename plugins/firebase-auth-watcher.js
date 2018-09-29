@@ -1,6 +1,6 @@
-import personalPublic from '~/assets/personal-public.json'
-import quittingPublic from '~/assets/quitting-public.json'
-import desirePublic from '~/assets/desire-public.json'
+import personalPublic from '~/assets/jsons/personal-public.json'
+import quittingPublic from '~/assets/jsons/quitting-public.json'
+import desirePublic from '~/assets/jsons/desire-public.json'
 import { fireAuth, fireFunc } from '~/plugins/firebase-setting'
 
 export default ({ store }, inject) => {
