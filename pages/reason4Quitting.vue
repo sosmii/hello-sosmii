@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .folder-container {
-  min-height: 92vh;
+  min-height: 100vh;
   transition: background-color .5s ease;
 }
 .folder-container--blue {
