@@ -88,8 +88,6 @@ export default {
         message: this.message,
         githubId: this.githubId,
       });
-
-      this.$store.commit('authState/updateRegisterState', true);
     },
     showLoadingIcon() {
       this.whileLoading = true;

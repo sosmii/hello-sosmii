@@ -10,7 +10,7 @@
 import LoginContact from '@/components/modals/contact/LoginContact';
 import RegisterContact from '@/components/modals/contact/RegisterContact';
 import CompleteContact from '@/components/modals/contact/CompleteContact';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'BaseContact',
@@ -20,11 +20,8 @@ export default {
     CompleteContact,
   },
   computed: {
-    ...mapState('authState', [
-      'isUserLoggedIn',
-      'isUserRegistered',
-      'isUserAuthorized',
-    ]),
+    ...mapState('authState', ['isUserLoggedIn']),
+    ...mapGetters('authState', ['isUserRegistered']),
     step() {
       if (!this.isUserLoggedIn) {
         return 'login';

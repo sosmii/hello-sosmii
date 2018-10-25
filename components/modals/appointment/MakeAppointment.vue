@@ -205,7 +205,6 @@ export default {
           place: this.place,
         });
 
-        this.$store.commit('authState/updateReservationState', true);
         this.$emit('done');
       } catch (err) {
         this.$emit('error');

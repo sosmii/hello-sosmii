@@ -43,7 +43,7 @@ export default {
       unbindFirebaseRef('dbState');
     }),
     resetAllState({ commit }) {
-      commit(setDbState, null);
+      commit('setDbState', null);
     },
   },
 };
