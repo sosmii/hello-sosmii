@@ -1,23 +1,49 @@
+import { firestore } from '~/plugins/firebase-setting';
+import { firebaseAction } from 'vuexfire';
+
 export default {
   namespaced: true,
   state: {
     isUserLoggedIn: false,
-    isUserRegistered: false,
-    isUserAuthorized: false,
-    hasUserReserved: false,
+    dbState: null,
+  },
+  getters: {
+    isUserRegistered: state => {
+      return state.dbState != null;
+    },
+    isUserAuthorized: state => {
+      return state.dbState ? state.dbState.isAuthorized : false;
+    },
+    hasUserReserved: state => {
+      return state.dbState ? state.dbState.isReserved : false;
+    },
   },
   mutations: {
-    updateLoginState(state, boolean) {
-      state.isUserLoggedIn = boolean;
+    setLoginState(state, val) {
+      state.isUserLoggedIn = val;
     },
-    updateRegisterState(state, boolean) {
-      state.isUserRegistered = boolean;
+    setDbState(state, val) {
+      state.dbState = val;
     },
-    updateAuthorizedState(state, boolean) {
-      state.isUserAuthorized = boolean;
-    },
-    updateReservationState(state, boolean) {
-      state.hasUserReserved = boolean;
+  },
+  actions: {
+    BIND_USER_STATE: firebaseAction(
+      async ({ bindFirebaseRef, getters, dispatch }, payload) => {
+        await bindFirebaseRef(
+          'dbState',
+          firestore.collection('user').doc(payload.uid)
+        );
+
+        if (getters.isUserAuthorized) {
+          dispatch('jsonData/fetchCardsDataFromRemote', null, { root: true });
+        }
+      }
+    ),
+    UNBIND_USER_STATE: firebaseAction(({ unbindFirebaseRef }) => {
+      unbindFirebaseRef('dbState');
+    }),
+    resetAllState({ commit }) {
+      commit('setDbState', null);
     },
   },
 };

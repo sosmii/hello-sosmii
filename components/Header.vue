@@ -59,7 +59,7 @@ import BaseModal from '@/components/modals/BaseModal';
 import BaseContact from '@/components/modals/contact/BaseContact';
 import BaseAppointment from '@/components/modals/appointment/BaseAppointment';
 import { setTimeout } from 'timers';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'Header',
@@ -75,7 +75,7 @@ export default {
     };
   },
   computed: {
-    ...mapState('authState', ['isUserAuthorized', 'hasUserReserved']),
+    ...mapGetters('authState', ['isUserAuthorized', 'hasUserReserved']),
     ...mapState('paginationState', [
       'isInAboutMePage',
       'isInQuittingPage',

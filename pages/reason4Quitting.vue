@@ -1,21 +1,19 @@
 <template>
   <div class="folder-container folder-container--blue">
-    <cardsFolder :json-data="jsonData"/>
+    <cardsFolder :json-data="json.quitting"/>
   </div>
 </template>
 
 <script>
 import cardsFolder from '~/components/CardsFolder';
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
     cardsFolder,
   },
   computed: {
-    ...mapState('jsonData', {
-      jsonData: 'quitting',
-    }),
+    ...mapGetters('jsonData', ['json']),
   },
 };
 </script>

@@ -22,7 +22,8 @@
     "moment-timezone": "^0.5.21",
     "normalize.css": "^8.0.0",
     "nuxt": "^2.0.0",
-    "vue-loaders": "^2.0.0"
+    "vue-loaders": "^2.0.0",
+    "vuexfire": "^3.0.0-alpha.9"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

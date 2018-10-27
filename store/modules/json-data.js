@@ -1,49 +1,41 @@
+import { fireFunc } from '~/plugins/firebase-setting';
+
+import personalPublic from '~/assets/jsons/personal-public.json';
+import quittingPublic from '~/assets/jsons/quitting-public.json';
+import desirePublic from '~/assets/jsons/desire-public.json';
+
 export default {
   namespaced: true,
   state: {
-    personal: {
-      pageTitle: null,
-      cardsData: [
-        {
-          title: null,
-          body: null,
-          expand: null,
-          displayOrder: null,
-        },
-      ],
+    publicJson: {
+      personal: personalPublic,
+      quitting: quittingPublic,
+      desire: desirePublic,
     },
-    quitting: {
-      pageTitle: null,
-      cardsData: [
-        {
-          title: null,
-          body: null,
-          expand: null,
-          displayOrder: null,
-        },
-      ],
-    },
-    desire: {
-      pageTitle: null,
-      cardsData: [
-        {
-          title: null,
-          body: null,
-          expand: null,
-          displayOrder: null,
-        },
-      ],
+    privateJson: null,
+  },
+  getters: {
+    json: state => {
+      return state.privateJson ? state.privateJson : state.publicJson;
     },
   },
   mutations: {
-    setPersonal(state, val) {
-      state.personal = val;
-    },
-    setQuitting(state, val) {
-      state.quitting = val;
-    },
-    setDesire(state, val) {
-      state.desire = val;
+    setPrivateJson(state, val) {
+      state.privateJson = val;
     },
   },
+  actions: {
+    async fetchCardsDataFromRemote({ state, commit }) {
+      if (state.privateJson) return;
+
+      const cardsData = await fetchCardsDataFromRemote();
+      commit('setPrivateJson', cardsData);
+    },
+  },
+};
+
+const fetchCardsDataFromRemote = async () => {
+  const fetchFunc = fireFunc.httpsCallable('fetchCardsData');
+
+  return (await fetchFunc()).data;
 };
