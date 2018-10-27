@@ -1,8 +1,8 @@
 <template>
   <div
-    :class="{ 'expand': shouldExpand }"
+    :class="{ 'expand': expand }"
     class="card"
-    @click="shouldExpand = true"
+    @click="expand = true"
   >
     <div class="card__title">{{ title }}</div>
     <div 
@@ -33,6 +33,11 @@ export default {
         return false;
       },
     },
+  },
+  data() {
+    return {
+      expand: this.shouldExpand,
+    };
   },
 };
 </script>
